@@ -1,5 +1,54 @@
 #include "BitcoinExchange.hpp"
 
+/*
+	[ Flow summary ]
+	main()
+	├─ BitcoinExchange()               → Loads "data.csv" into mapData
+	└─ processInputFile(argv[1])
+		├─ splitLineByDelimiter()     → Split date | value
+		├─ trimWhitespace()           → Remove spaces
+		├─ validateDateFormat()       → Check date format/range
+		├─ validateAndConvertValue()  → Validate and convert value
+		└─ displayExchangeResult()    → Lookup rate, calculate, print
+
+	[ Flow detail ]
+	main()
+	1. Make the object by using constructor.
+		-> BitcoinExchange bitcoinExchange;
+			-> Opens "data.csv"
+			-> Reads line by line
+			-> Parses (data, exchange rate)
+			-> Stores into mapData(map container)
+
+			ex) 2009-01-02, 0 -> map["2009-01-02"] = 0.0
+		
+	2. Handle user input
+		-> bitcoinExchange.processInputFile(argv[1]);
+			-> Opens given input file (= "input.txt")
+			-> Reads and parse each line
+			-> Validates (date) and (value)
+			-> Calculates and prints exchange result
+
+			a. splitLineByDelimiter()
+				-> Splits line into "data" and "value" by '|'
+
+			b. trimWhitespace()
+				-> Removes extra spaces from "data" and "value"
+
+			c. validateDataFormat()
+				-> Checks format (YYYY-MM-DD)
+				-> Validates data range and leap year
+			
+			d. validateAndCovertValue()
+				-> Checks value format
+				-> Converts to double
+				-> Validates range (0 ~ 1000)
+
+			e. displayExchangeResult()
+				-> Looks up exchange rate from mapData
+				-> Calculates value * rate
+				-> Prints result
+*/
 int main(int argc, char *argv[])
 {
 	if (argc != 2)
@@ -9,17 +58,7 @@ int main(int argc, char *argv[])
 	}
 	try
 	{
-		/*	1. Constructor
-			Open the "data.scv"file. While reading each line, the values
-			​​before and after the comma are stored in the map container.
-			= For saving data of "data.scv" file to the map container.
-		*/
 		BitcoinExchange bitcoinExchange;
-
-		/*	2. Processer
-			Reads the given file, processes each line, parses the date and value information, verifies it, and outputs the result.
-			= 주어진 파일을 읽어 각 줄을 처리하고 날짜와 값 정보를 파싱하여 검증 후 결과를 출력.
-		*/
 		bitcoinExchange.processInputFile(argv[1]);
 	}
 	catch(const std::exception& e)
