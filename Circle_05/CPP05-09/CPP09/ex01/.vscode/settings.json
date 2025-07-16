@@ -1,0 +1,12 @@
+{
+	"files.associations": {
+		"__config": "cpp",
+		"exception": "cpp",
+		"new": "cpp",
+		"optional": "cpp",
+		"stdexcept": "cpp",
+		"system_error": "cpp",
+		"typeinfo": "cpp",
+		"variant": "cpp"
+	}
+}

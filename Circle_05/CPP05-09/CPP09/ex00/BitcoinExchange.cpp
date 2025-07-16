@@ -56,6 +56,7 @@ BitcoinExchange::BitcoinExchange()
 		until meet with the Param(3):","
 		and save it to the Param(2):"date"
 		= Now in the Param(1):"ss", value after "," is only stored.
+		= Finished to extract.
 		*/
 		std::getline(ss, date, ',');
 		ss >> exchangeRate;
@@ -274,10 +275,7 @@ void	BitcoinExchange::validateDateFormat(std::string date)
 
 	// 3. Check, if the range of year, month, and day is within valid range.
 	if(year < 1 || month < 1 || month > 12 || day < 1 || day > 31)
-	{
-		std::cout << RED << "JASON" << EOC << std::endl;
 		throw InvalidDateException();
-	}
 
 	// 4. Matching the Max.day with month.
 	const int dayInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};

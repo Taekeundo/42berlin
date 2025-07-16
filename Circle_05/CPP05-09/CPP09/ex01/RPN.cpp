@@ -23,7 +23,7 @@ RPN::RPN(const std::string& rpnExpression)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << RED << e.what() << EOC << std::endl;
 	}
 }
 

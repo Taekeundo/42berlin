@@ -22,7 +22,7 @@
 class RPN
 {
 	private:
-		/* [ Member variable ]: 3ea */
+		/* [ Member variable ]: 1ea */
 		std::stack<int> operandStack;
 
 	public:
