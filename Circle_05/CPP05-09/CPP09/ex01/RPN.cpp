@@ -65,7 +65,7 @@ void RPN::processOperator(char operation)
 		this->operandStack.push(left * right);
 	else if (operation == '/')
 	{
-		if (right == 0)
+		if (right == 0)	// Handling divide 0 edge case.
 			throw RPN::InvalidRpnExpressionException();
 		this->operandStack.push(left / right);
 	}

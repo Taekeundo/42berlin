@@ -1,5 +1,6 @@
-#pragma once
+#pragma once			// Tradition: #ifndef, #define, #endif
 
+/* HEADER FILE */
 #include <iostream>		// std::cout, std::cerr
 #include <iomanip>		// std::fixed, std::setprecision
 #include <string>		// std::string, string functions.
@@ -52,47 +53,47 @@ struct node
 class PmergeMe
 {
 	private:
-		// 1. Input
+		// [f] 1. Input: 1ea
 		std::string input;
 
-		// 2. Original data
+		// [f] 2. Original data: 2ea
 		std::vector<node> originalVector;
 		std::deque<node> originalDeque;
 
-		// 3. Sorted data
+		// [f] 3. Sorted data: 2ea
 		std::vector<node> sortedVector;
 		std::deque<node> sortedDeque;
 
-		// 4. Duration time
+		// [f] 4. Duration time: 2ea
 		double vectorSortTime;
 		double dequeSortTime;
 
 	public:
-		// OCF: 4ea
+		// [f] OCF: 4ea
 		PmergeMe();
 		~PmergeMe();
 		PmergeMe(const PmergeMe &other);				// Copy(Create new object)
 		PmergeMe& operator=(const PmergeMe &other);		// Reference(Using original object)
 
-		// Input: 3ea
+		// [f] Input: 3ea
 		bool readInput(int ac, char **av);
 		bool isOnlyWhitespace(const std::string& input);
 		bool isValidInputSyntax(std::string input);
 
-		// Vector: 2ea
+		// [f] Vector: 2ea
 		void runVectorSort();
 		void parseInputToVector();
 
-		// Deque: 2ea
+		// [f] Deque: 2ea
 		void runDequeSort();
 		void parseInputToDeque();
 
-		// ETC: 2ea
+		// [f] ETC: 2ea
 		void printResult() const;
 		void resetData();
 
-		// Common (vector & deque): 7ea
-		/*	[f]
+		// [f] Common (vector & deque): 7ea
+		/*
 			[ Backgroud ]
 			1. 
 			std::istringstream	// Input only stringstream.		// Read only
